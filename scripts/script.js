@@ -306,3 +306,51 @@ if (scrollToTopBtn) {
     courseContainer.appendChild(card);
   });
 });
+// Проверяем, существует ли секция .courses
+const coursesSection = document.querySelector('.courses');
+
+if (coursesSection) {
+  // Находим контейнер для карточек
+  const courseList = coursesSection.querySelector('.courses-container');
+
+  // Объект с данными о курсах
+  const coursesData = {
+    course1: {
+      level: '– Начальный –',
+      price: '12 000 ₽',
+      description: 'Изучение базовой лексики и грамматики английского языка.',
+      button: 'Подробнее'
+    },
+    course2: {
+      level: '– Бизнес –',
+      price: '15 000 ₽',
+      description: 'Курс для тех, кто хочет использовать английский в профессиональной среде.',
+      button: 'Подробнее'
+    },
+    course3: {
+      level: '– Перевод –',
+      price: '10 000 ₽',
+      description: 'Теория и практика перевода между языками.',
+      button: 'Подробнее'
+    }
+  };
+
+  // Функция создания карточки
+  const createCourseCard = (level, price, description, button) => {
+    return `
+      <div class="course-card">
+        <p class="course-level">${level}</p>
+        <p class="course-price">${price}</p>
+        <p class="course-description">${description}</p>
+        <button class="course-button button">${button}</button>
+      </div>
+    `;
+  };
+
+  // Добавляем карточки на страницу
+  for (const cardKey in coursesData) {
+    const card = coursesData[cardKey];
+    const courseCardHTML = createCourseCard(card.level, card.price, card.description, card.button);
+    courseList.insertAdjacentHTML('beforeend', courseCardHTML);
+  }
+}
