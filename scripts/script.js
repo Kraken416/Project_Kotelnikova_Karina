@@ -301,3 +301,47 @@ if (scrollToTopBtn) {
 } else {
   console.error("Ошибка: кнопка #scroll-to-top не найдена.");
 }
+// Объекты с информацией о курсах
+const courses = [
+  {
+    title: "Английский для начинающих",
+    description: "Изучение базовой лексики и грамматики английского языка.",
+    icon: "images/course1.png",
+    link: "#",
+    category: "Начальный уровень"
+  },
+  {
+    title: "Бизнес-английский",
+    description: "Курс для тех, кто хочет использовать английский в профессиональной среде.",
+    icon: "images/course2.png",
+    link: "#",
+    category: "Средний уровень"
+  },
+  {
+    title: "Переводоведение",
+    description: "Теория и практика перевода между языками.",
+    icon: "images/course3.png",
+    link: "#",
+    category: "Продвинутый уровень"
+  }
+];
+
+// Функция для отображения курсов
+document.addEventListener("DOMContentLoaded", function () {
+  const courseContainer = document.querySelector(".courses-container");
+
+  courses.forEach(function(course) {
+    const card = document.createElement("div");
+    card.classList.add("course-card");
+
+    card.innerHTML = `
+      <img src="${course.icon}" alt="${course.title}" class="course-icon">
+      <h3>${course.title}</h3>
+      <p class="category"><strong>Уровень:</strong> ${course.category}</p>
+      <p class="description">${course.description}</p>
+      <a href="${course.link}" class="course-link">Подробнее</a>
+    `;
+
+    courseContainer.appendChild(card);
+  });
+});
